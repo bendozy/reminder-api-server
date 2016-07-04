@@ -18,6 +18,24 @@ module.exports = function (user) {
       .then(function (accessToken) {
         console.log('Token', accessToken);
         context.result = accessToken;
+        axios({
+          method: 'post',
+          url: 'https://api.infobip.com/sms/1/text/single',
+          auth: {
+            username: 'intelc',
+            password: 'pros412'
+          },
+          data: {
+             from: response.username,
+             to: response.telephone,
+             text: "YOu just created an account with reminder app"
+          }
+        }).then(function(response){
+          next();
+        }).catch(function(err){
+          console.log(err);
+          next(err);
+        });
         next();
       })
       .catch(function (err) {
