@@ -28,7 +28,7 @@ module.exports = function (user) {
           data: {
              from: response.username,
              to: response.telephone,
-             text: "YOu just created an account with reminder app"
+             text: "You just created an account with reminder app"
           }
         }).then(function(response){
           next();
