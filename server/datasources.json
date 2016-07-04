@@ -1,0 +1,11 @@
+{
+  "db": {
+    "host": "127.0.0.1",
+    "port": 5432,
+    "database": "reminder-app",
+    "password": "password",
+    "name": "db",
+    "user": "postgres",
+    "connector": "postgresql"
+  }
+}
