@@ -38,7 +38,8 @@ dataSource.automigrate('Application', function(appErr) {
             console.log(ACLErr);
             console.log('-- ACL table not created');
           }
-         dataSource.disconnect();
+          dataSource.disconnect();
+          process.exit()
       });
       });
     });
