@@ -14,57 +14,57 @@ module.exports = function(app, cb) {
    */
    new CronJob(runTime, function() {
      console.log('You will see this message every day at 12:00 AM');
-      Contact.find({include: 'user'}).then(function(contacts) {
-        if ( contacts.length > 0 && contacts.length === 1 ){
-          axios({
-            method: 'post',
-            url: 'https://api.infobip.com/sms/1/text/single',
-            auth: {
-              username: 'intelc',
-              password: 'pros412'
-            },
-            data: {
-               from: contacts[0].user.username,
-               to: contacts[0].telephone,
-               text: "Happy Birthday "
-                     + contacts[0].fullname
-                     + " Many more years to you"
-            }
-          }).then(function(response){
-            cb();
-          }).catch(function(err){
-            console.log(err);
-            cb(err);
-          });
-        } else if (contacts.length > 0 ){
-           var formattedData = contacts.map(function (contact) {
-             return {
-               from: contact.user.username,
-               to: contact.telephone,
-               text:"Happy Birthday "
-                    + contact.fullname
-                    + " Many more years to you "
-             };
-           });
-
-           axios({
-             method: 'post',
-             url: 'https://api.infobip.com/sms/1/text/multi',
-             auth: {
-               username: 'intelc',
-               password: 'pros412'
-             },
-             data: {
-                messages: formattedData
-             }
-           }).then(function(response){
-             cb();
-           }).catch(function(err){
-             console.log(err);
-             cb(err);
-           });
-        }
-      })
+      // Contact.find({include: 'user'}).then(function(contacts) {
+      //   if ( contacts.length > 0 && contacts.length === 1 ){
+      //     axios({
+      //       method: 'post',
+      //       url: 'https://api.infobip.com/sms/1/text/single',
+      //       auth: {
+      //         username: 'intelc',
+      //         password: 'pros412'
+      //       },
+      //       data: {
+      //          from: contacts[0].user.username,
+      //          to: contacts[0].telephone,
+      //          text: "Happy Birthday "
+      //                + contacts[0].fullname
+      //                + " Many more years to you"
+      //       }
+      //     }).then(function(response){
+      //       cb();
+      //     }).catch(function(err){
+      //       console.log(err);
+      //       cb(err);
+      //     });
+      //   } else if (contacts.length > 0 ){
+      //      var formattedData = contacts.map(function (contact) {
+      //        return {
+      //          from: contact.user.username,
+      //          to: contact.telephone,
+      //          text:"Happy Birthday "
+      //               + contact.fullname
+      //               + " Many more years to you "
+      //        };
+      //      });
+      //
+      //      axios({
+      //        method: 'post',
+      //        url: 'https://api.infobip.com/sms/1/text/multi',
+      //        auth: {
+      //          username: 'intelc',
+      //          password: 'pros412'
+      //        },
+      //        data: {
+      //           messages: formattedData
+      //        }
+      //      }).then(function(response){
+      //        cb();
+      //      }).catch(function(err){
+      //        console.log(err);
+      //        cb(err);
+      //      });
+      //   }
+      // });
 
      }, null, true, 'Africa/Lagos');
 
