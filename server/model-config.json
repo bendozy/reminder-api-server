@@ -28,9 +28,6 @@
     "dataSource": "db"
   },
   "Contact": {
-    "dataSource": "db",
-    "public": true,
-    "$promise": {},
-    "$resolved": true
+    "dataSource": "db"
   }
 }
