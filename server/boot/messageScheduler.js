@@ -8,7 +8,7 @@ var dataSource = app.dataSources.db;
 
 module.exports = function(app, cb) {
   var Contact = app.models.Contact;
-  var runTime = '00 56 22 * * 0-6';
+  var runTime = '00 00 00 * * 0-6';
   var today = moment();
   var month = '';
   if(today.month() <9){
